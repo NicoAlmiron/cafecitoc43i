@@ -8,19 +8,42 @@ import DetalleProducto from "./components/views/DetalleProducto";
 import CrearProducto from "./components/views/producto/CrearProducto";
 import EditarProducto from "./components/views/producto/EditarProducto";
 import Administrador from "./components/views/Administrador";
+import Login from "./components/views/Login";
+import Registro from "./components/views/Registro";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Menu></Menu>
-      {/* <Error404></Error404> */}
-      {/* <Inicio></Inicio> */}
-      {/* <DetalleProducto></DetalleProducto> */}
-      {/* <CrearProducto></CrearProducto> */}
-      {/* <EditarProducto></EditarProducto> */}
-      <Administrador></Administrador>
+      <Routes>
+        <Route exact path="/" element={<Inicio></Inicio>}></Route>
+        <Route exact path="/login" element={<Login></Login>}></Route>
+        <Route exact path="/registro" element={<Registro></Registro>}></Route>
+        <Route
+          exact
+          path="/detalleProducto"
+          element={<DetalleProducto></DetalleProducto>}
+        ></Route>
+        <Route
+          exact
+          path="/administrador"
+          element={<Administrador></Administrador>}
+        ></Route>
+        <Route
+          exact
+          path="/administrador/crearProducto"
+          element={<CrearProducto></CrearProducto>}
+        ></Route>
+        <Route
+          exact
+          path="/administrador/editarProducto"
+          element={<EditarProducto></EditarProducto>}
+        ></Route>
+        <Route path="*" element={<Error404></Error404>}></Route>
+      </Routes>
       <Footer></Footer>
-    </>
+    </BrowserRouter>
   );
 }
 
