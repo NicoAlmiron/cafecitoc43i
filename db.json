@@ -1,0 +1,25 @@
+{
+    "productos": [{
+            "nombreProducto": "cafe",
+            "precio": 550,
+            "categoria": "bebida caliente",
+            "imagen": "https://images.pexels.com/photos/10781076/pexels-photo-10781076.jpeg",
+            "descripcion": "cafe muy rico",
+            "id": 1
+        },
+        {
+            "nombreProducto": "té",
+            "precio": 200,
+            "categoria": "bebida caliente",
+            "imagen": "https://images.pexels.com/photos/6154065/pexels-photo-6154065.jpeg",
+            "descripcion": "té caliente muy rico",
+            "id": 2
+        }
+    ],
+    "usuarios": [{
+        "nombreUsuario": "Admi",
+        "email": "admi@gmail.com",
+        "password": "laMasDificil2023",
+        "id": 1
+    }]
+}

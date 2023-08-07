@@ -13,6 +13,7 @@ import Registro from "./components/views/Registro";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
+  //  ("json-server --watch db.json --port 3004") db.json run
   return (
     <BrowserRouter>
       <Menu></Menu>
