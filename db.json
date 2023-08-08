@@ -17,7 +17,7 @@
         }
     ],
     "usuarios": [{
-        "nombreUsuario": "Admi",
+        "nombreUsuario": "Admin",
         "email": "admi@gmail.com",
         "password": "laMasDificil2023",
         "id": 1

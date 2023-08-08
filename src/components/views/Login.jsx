@@ -1,5 +1,7 @@
 import { Form, Button, Container, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { loguin } from "../helpers/queries";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const {
@@ -12,6 +14,21 @@ const Login = () => {
   const onSubmit = (usuario) => {
     console.log(usuario.email);
     console.log(usuario.password);
+    loguin(usuario).then((respuesta) => {
+      if (respuesta) {
+        Swal.fire(
+          "Bienvenido " + respuesta.nombreUsuario + "!",
+          "iniciaste sesion con exito!",
+          "success"
+        );
+      } else {
+        Swal.fire(
+          "ocurrio un error!",
+          "Email y/o Password incorrecto",
+          "error"
+        );
+      }
+    });
   };
 
   // ExpRegularContraseña: ^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$

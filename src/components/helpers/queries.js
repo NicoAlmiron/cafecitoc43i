@@ -16,13 +16,11 @@ export const loguin = async(usuario) => {
                 console.log('los datos ingresados son incorrectos, por favor verifique sus datos');
                 return null;
             }
-
         } else {
             //caso contrario tendria que decir que salio todo mal
             console.log('los datos ingresados son incorrectos, por favor verifique sus datos.');
             return null;
         }
-
     } catch (error) {
         console.log(error);
     }
