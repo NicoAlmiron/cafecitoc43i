@@ -1,9 +1,9 @@
 import { Form, Button, Container, Card } from "react-bootstrap";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { loguin } from "../helpers/queries";
 import Swal from "sweetalert2";
 
-const Login = () => {
+const Login = ({ setUsuarioActivo }) => {
   const {
     register,
     handleSubmit,
@@ -21,6 +21,12 @@ const Login = () => {
           "iniciaste sesion con exito!",
           "success"
         );
+        //guardar el usuario en el localStorague o sesionStorague (no se guarda la contraseña, en este caso se hace la exepcion)
+        sessionStorage.setItem(
+          "usuarioLogueado",
+          JSON.stringify(usuario.email)
+        );
+        setUsuarioActivo(usuario.email);
       } else {
         Swal.fire(
           "ocurrio un error!",
