@@ -1,5 +1,7 @@
 const uriUsuario =
     import.meta.env.VITE_API_USUARIO;
+const uriProductos =
+    import.meta.env.VITE_API_PRODUCTO;
 //la funcion recibe de parametros un usuario con email y password
 export const loguin = async(usuario) => {
     try {
@@ -25,5 +27,24 @@ export const loguin = async(usuario) => {
         }
     } catch (error) {
         console.log(error);
+    }
+}
+
+// peticiones o solicitudes a la api
+// peticion GET devuelve un listado de elementos o un elemento 
+// peticion POST, crear un elemento nuevo. (Login)
+// peticion PUT, modifica todos los valores de un elemento
+// peticion PATCH, modifica algun valor de un elemento
+// peticion DELETE, eliminar/borrar un elemento
+
+const listarProductos = async() => {
+    try {
+        const respuesta = await fetch(uriProductos)
+        console.log(respuesta);
+        const listaProductos = await respuesta.json()
+        return listaProductos;
+    } catch (error) {
+        console.log(error);
+        return null;
     }
 }

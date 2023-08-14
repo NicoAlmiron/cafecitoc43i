@@ -1,6 +1,10 @@
 import { Container, Row } from "react-bootstrap";
 import CardProducto from "./producto/CardProducto";
+import { useEffect, useState } from "react";
 const Inicio = () => {
+  const [listaProductos, setListaProductos] = useState([]);
+
+  useEffect(() => {}, []);
   return (
     <section className="mainSection">
       <img
@@ -12,10 +16,10 @@ const Inicio = () => {
         <h1 className="display-4">Nuestros Productos</h1>
         <hr />
         <Row>
-            <CardProducto></CardProducto>
-            <CardProducto></CardProducto>
-            <CardProducto></CardProducto>
-            <CardProducto></CardProducto>
+          <CardProducto></CardProducto>
+          <CardProducto></CardProducto>
+          <CardProducto></CardProducto>
+          <CardProducto></CardProducto>
         </Row>
       </Container>
     </section>
