@@ -22,11 +22,8 @@ const Login = ({ setUsuarioActivo }) => {
           "success"
         );
         //guardar el usuario en el localStorague o sesionStorague (no se guarda la contraseña, en este caso se hace la exepcion)
-        sessionStorage.setItem(
-          "usuarioLogueado",
-          JSON.stringify(usuario.email)
-        );
-        setUsuarioActivo(usuario.email);
+        sessionStorage.setItem("usuarioLogueado", JSON.stringify(usuario));
+        setUsuarioActivo(usuario);
       } else {
         Swal.fire(
           "ocurrio un error!",

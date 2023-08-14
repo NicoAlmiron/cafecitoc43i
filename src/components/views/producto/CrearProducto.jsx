@@ -8,7 +8,9 @@ const CrearProducto = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (usuario) => {};
+  const onSubmit = (producto) => {
+    console.log(producto);
+  };
 
   return (
     <section className="container mainSection">

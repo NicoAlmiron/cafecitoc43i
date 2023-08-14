@@ -1,8 +1,10 @@
+const uriUsuario =
+    import.meta.env.VITE_API_USUARIO;
 //la funcion recibe de parametros un usuario con email y password
 export const loguin = async(usuario) => {
     try {
         // pedir la lista dee usuariosa json-server
-        const respuesta = await fetch('http://localhost:3004/usuarios');
+        const respuesta = await fetch(uriUsuario);
         const listaUsuarios = await respuesta.json();
         //buscar si el usuario que completo el formulario esta dentro de la lista de json-server
         const usuarioABuscar = listaUsuarios.find((itemUsuario) => itemUsuario.email === usuario.email)
