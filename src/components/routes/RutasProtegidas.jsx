@@ -10,12 +10,12 @@ const RutasProtegidas = () => {
       <Route exact path="/" element={<Administrador></Administrador>}></Route>
       <Route
         exact
-        path="/administrador/crearProducto"
+        path="/crearProducto"
         element={<CrearProducto></CrearProducto>}
       ></Route>
       <Route
         exact
-        path="/administrador/editarProducto"
+        path="/editarProducto"
         element={<EditarProducto></EditarProducto>}
       ></Route>
     </Routes>

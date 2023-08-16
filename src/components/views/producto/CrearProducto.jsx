@@ -22,11 +22,15 @@ const CrearProducto = () => {
           <Form.Control
             type="text"
             placeholder="Ej: Cafe"
-            {...register("nombreProdcuto", {
+            {...register("nombreProducto", {
               required: "el nombre es un dato obligatorio",
-              pattern: {
-                value: /[a-zA-Za{3,35}]+/g,
-                message: "el nombre debe cumplir con un formato valido",
+              minLength: {
+                value: 2,
+                message: "Debe ingresar por lo menos dos caracteres",
+              },
+              maxLength: {
+                value: 32,
+                message: "El maximo permitido es de 32 caracteres",
               },
             })}
           />
@@ -41,6 +45,14 @@ const CrearProducto = () => {
             placeholder="Ej: 50"
             {...register("precio", {
               required: "el Precio es un dato obligatorio",
+              minLength: {
+                value: 2,
+                message: "el precio minimo es de $10",
+              },
+              maxLength: {
+                value: 5,
+                message: "exediste el maximo!, $99.999 es el precio maximo",
+              },
             })}
           />
           <Form.Text className="text-danger">
@@ -55,9 +67,8 @@ const CrearProducto = () => {
             {...register("imagen", {
               required: "La imagen es un dato obligatorio",
               pattern: {
-                value: /^(www)?.+\.[a-z]{2,6}(\.[a-z]{2,6})?.+\.[a-z]{2,4}$/,
-                message:
-                  "La url de la imagen debe cumplir con un formato valido",
+                value: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/,
+                message: "debe ingresar una dirección URL valida",
               },
             })}
           />
@@ -67,25 +78,41 @@ const CrearProducto = () => {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formCategoria">
           <Form.Label>Categoria*</Form.Label>
-          <Form.Select>
+          <Form.Select
+            {...register("categoria", {
+              required: "debe seleccionar alguna categoria",
+            })}
+          >
             <option value="">Seleccione una opcion</option>
             <option value="bebida caliente">Bebida caliente</option>
             <option value="bebida fria">Bebida fria</option>
             <option value="dulce">Dulce</option>
             <option value="salado">Salado</option>
           </Form.Select>
+          <Form.Text className="text-danger">
+            {errors.categoria?.message}
+          </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formDescripcion">
           <Form.Label>Descripcion*</Form.Label>
           <Form.Control
             as="textarea"
-            rows={2}
+            rows={3}
             {...register("descripcion", {
               required: "La descripcion es un dato obligatorio",
+              minLength: {
+                value: 10,
+                message:
+                  "Debe ingresar por lo menos 10 caracteres de descripcion",
+              },
+              maxLength: {
+                value: 350,
+                message: "Exediste el limite de 350 caracteres",
+              },
             })}
           />
           <Form.Text className="text-danger">
-            {errors.imagen?.message}
+            {errors.descripcion?.message}
           </Form.Text>
         </Form.Group>
         <Button variant="primary" type="submit">

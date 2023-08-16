@@ -37,7 +37,7 @@ export const loguin = async(usuario) => {
 // peticion PATCH, modifica algun valor de un elemento
 // peticion DELETE, eliminar/borrar un elemento
 
-const listarProductos = async() => {
+export const listarProductos = async() => {
     try {
         const respuesta = await fetch(uriProductos)
         console.log(respuesta);
