@@ -1,15 +1,35 @@
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { crearProducto } from "../../helpers/queries";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CrearProducto = () => {
+  const detalleProducto = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = (producto) => {
-    console.log(producto);
+    crearProducto(producto)
+      .then((respuesta) => {
+        if (respuesta.status === 201) {
+          Swal.fire("todo ok!", "el producto fue cargado con exito", "success");
+          // reset(); esto resetea el formulario
+          detalleProducto("/detalleProducto");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire(
+          "algo flota!",
+          "hubo un error al cargar el producto",
+          "error"
+        );
+      });
   };
 
   return (

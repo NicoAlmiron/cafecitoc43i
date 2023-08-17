@@ -20,6 +20,7 @@ const Inicio = () => {
       }
     });
   }, []);
+
   return (
     <section className="mainSection">
       <img

@@ -48,3 +48,31 @@ export const listarProductos = async() => {
         return null;
     }
 }
+
+export const crearProducto = async(producto) => {
+    try {
+        const respuesta = await fetch(uriProductos, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(producto) })
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const obtenerProductito = async(id) => {
+    try {
+        const respuesta = await fetch(`${uriProductos}/${id}`)
+        const data = await respuesta.json();
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const editarProducto = async(id, productoEditado) => {
+    try {
+        const respuesta = await fetch(`${uriProductos}/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(productoEditado) });
+        return respuesta;
+    } catch (error) {
+        console.log(error);
+    }
+}

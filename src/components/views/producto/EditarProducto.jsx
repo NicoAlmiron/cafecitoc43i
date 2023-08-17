@@ -1,15 +1,51 @@
+import { useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import { editarProducto, obtenerProductito } from "../../helpers/queries";
+import Swal from "sweetalert2";
 
 const EditarProducto = () => {
+  const { id } = useParams();
+  Swal;
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
+    reset,
   } = useForm();
 
+  useEffect(() => {
+    obtenerProductito(id)
+      .then((resp) => {
+        if (resp) {
+          setValue("nombreProducto", resp.nombreProducto);
+          setValue("precio", resp.precio);
+          setValue("imagen", resp.imagen);
+          setValue("categoria", resp.categoria);
+          setValue("descripcion", resp.descripcion);
+        }
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
   const onSubmit = (producto) => {
-    console.log(producto);
+    editarProducto(id, producto)
+      .then((respuesta) => {
+        if (respuesta.status === 200) {
+          Swal.fire("todo ok!", "el producto fue editado con exito", "success");
+          // detalleProducto("/detalleProducto"); esto me lleva a la pagina del producto
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire(
+          "algo flota!",
+          "hubo un error al editar el producto",
+          "error"
+        );
+      });
   };
 
   return (
