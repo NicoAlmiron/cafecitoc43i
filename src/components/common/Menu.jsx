@@ -25,7 +25,7 @@ const Menu = ({ usuarioActivo, setUsuarioActivo }) => {
             <NavLink end to={"/registro"} className="nav-link">
               Registro
             </NavLink>
-            {usuarioActivo.email ? (
+            {usuarioActivo.usuario ? (
               <>
                 <NavLink end to={"/administrador"} className="nav-link">
                   Administrador

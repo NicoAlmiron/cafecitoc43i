@@ -1,6 +1,6 @@
 import { Form, Button, Container, Card } from "react-bootstrap";
 import { set, useForm } from "react-hook-form";
-import { loguin } from "../helpers/queries";
+import { login } from "../helpers/queries";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
@@ -16,16 +16,16 @@ const Login = ({ setUsuarioActivo }) => {
   const onSubmit = (usuario) => {
     console.log(usuario.email);
     console.log(usuario.password);
-    loguin(usuario).then((respuesta) => {
-      if (respuesta) {
+    login(usuario).then((respuesta) => {
+      if (respuesta.status === 200) {
         Swal.fire(
-          "Bienvenido " + respuesta.nombreUsuario + "!",
+          "Bienvenido " + respuesta.usuario + "!",
           "iniciaste sesion con exito!",
           "success"
         );
         //guardar el usuario en el localStorague o sesionStorague (no se guarda la contraseña, en este caso se hace la exepcion)
         sessionStorage.setItem("usuarioLogueado", JSON.stringify(usuario));
-        setUsuarioActivo(usuario);
+        setUsuarioActivo(respuesta);
         redireccionAdmin("/administrador");
       } else {
         Swal.fire(

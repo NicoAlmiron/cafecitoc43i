@@ -13,7 +13,6 @@ const EditarProducto = () => {
     handleSubmit,
     formState: { errors },
     setValue,
-    reset,
   } = useForm();
 
   useEffect(() => {

@@ -22,6 +22,7 @@ const Administrador = () => {
       }
     });
   }, []);
+
   return (
     <section className="container mainSection">
       <div className="d-flex justify-content-between align-items-center mt-5">
@@ -44,7 +45,7 @@ const Administrador = () => {
         </thead>
         <tbody>
           {listaProductos.map((producto) => (
-            <ItemProducto key={producto.id} producto={producto}></ItemProducto>
+            <ItemProducto key={producto._id} producto={producto}></ItemProducto>
           ))}
         </tbody>
       </Table>
