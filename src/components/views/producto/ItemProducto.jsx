@@ -1,8 +1,30 @@
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { borrarProductoAPI } from "../../helpers/queries";
+import { borrarProductoAPI, listarProductos } from "../../helpers/queries";
+import Swal from "sweetalert2";
 
-const ItemProducto = ({ producto }) => {
+const ItemProducto = ({ producto, setListaProductos }) => {
+  const borrarProducto = (producto) => {
+    Swal.fire({
+      title: "Quiere eliminar " + producto.nombreProducto + "?",
+      text: "esta accion es permanente y no se podra revertir!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "error",
+      cancelButtonColor: "success",
+      confirmButtonText: "Si, quiero eliminar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          "Eliminado!",
+          "El producto fue eliminado con exito",
+          "success"
+        );
+        borrarProductoAPI(producto._id);
+      }
+    });
+  };
+
   return (
     <tr>
       <td>{producto._id}</td>
@@ -20,7 +42,9 @@ const ItemProducto = ({ producto }) => {
         <Button
           variant="danger"
           className="mt-1"
-          onClick={() => borrarProductoAPI(producto._id)}
+          onClick={() => {
+            borrarProducto(producto);
+          }}
         >
           Borrar
         </Button>

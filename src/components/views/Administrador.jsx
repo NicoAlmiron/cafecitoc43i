@@ -9,18 +9,20 @@ const Administrador = () => {
   const [listaProductos, setListaProductos] = useState([]);
 
   useEffect(() => {
-    listarProductos().then((respuestaProductos) => {
-      if (respuestaProductos) {
-        // actualizar el estado
-        setListaProductos(respuestaProductos);
-      } else {
+    listarProductos()
+      .then((res) => {
+        if (res) {
+          // actualizar el estado
+          setListaProductos(res);
+        }
+      })
+      .catch((error) => {
         Swal.fire(
-          "ocurrio un error!",
+          "ocurrio un error: " + error.message,
           "la emos pifiado, venite mas tarde",
           "error"
         );
-      }
-    });
+      });
   }, []);
 
   return (
@@ -45,7 +47,11 @@ const Administrador = () => {
         </thead>
         <tbody>
           {listaProductos.map((producto) => (
-            <ItemProducto key={producto._id} producto={producto}></ItemProducto>
+            <ItemProducto
+              key={producto._id}
+              producto={producto}
+              setListaProductos={setListaProductos}
+            ></ItemProducto>
           ))}
         </tbody>
       </Table>
