@@ -1,0 +1,52 @@
+{
+  "productos": [
+    {
+      "nombreProducto": "cafe",
+      "precio": "500",
+      "imagen": "https://images.pexels.com/photos/10781076/pexels-photo-10781076.jpeg",
+      "categoria": "bebida caliente",
+      "descripcion": "cafe muy rico",
+      "id": 1
+    },
+    {
+      "nombreProducto": "té",
+      "precio": 200,
+      "categoria": "bebida caliente",
+      "imagen": "https://images.pexels.com/photos/6154065/pexels-photo-6154065.jpeg",
+      "descripcion": "té caliente muy rico",
+      "id": 2
+    },
+    {
+      "nombreProducto": "batidos",
+      "precio": "800",
+      "imagen": "https://t2.uc.ltmcdn.com/es/posts/4/2/9/como_hacer_licuado_de_banana_35924_600_square.jpg",
+      "categoria": "bebida fria",
+      "descripcion": "es un batidos riquisimo, hecho muy bien",
+      "id": 3
+    },
+    {
+      "nombreProducto": "te de boldo",
+      "precio": "230",
+      "imagen": "https://www.lavanguardia.com/files/article_gallery_microformat/uploads/2019/03/27/5e997db515902.jpeg",
+      "categoria": "bebida caliente",
+      "descripcion": ",un rico te caliente de boldo",
+      "id": 4
+    },
+    {
+      "nombreProducto": "cafe con leche",
+      "precio": "800",
+      "imagen": "https://i.blogs.es/421374/cafe-con-leche2/1366_2000.jpg",
+      "categoria": "bebida caliente",
+      "descripcion": "muy rico cafe con leche\n",
+      "id": 5
+    }
+  ],
+  "usuarios": [
+    {
+      "nombreUsuario": "Admin",
+      "email": "admi@gmail.com",
+      "password": "laMasDificil2023",
+      "id": 1
+    }
+  ]
+}
