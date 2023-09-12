@@ -1,6 +1,26 @@
 import { Container, Row } from "react-bootstrap";
 import CardProducto from "./producto/CardProducto";
+import { useEffect, useState } from "react";
+import { listarProductos } from "../helpers/queries";
+import Swal from "sweetalert2";
 const Inicio = () => {
+  const [listaProductos, setListaProductos] = useState([]);
+
+  useEffect(() => {
+    listarProductos().then((respuestaProductos) => {
+      if (respuestaProductos) {
+        // actualizar el estado
+        setListaProductos(respuestaProductos);
+      } else {
+        Swal.fire(
+          "ocurrio un error!",
+          "la emos pifiado, venite mas tarde",
+          "error"
+        );
+      }
+    });
+  }, []);
+
   return (
     <section className="mainSection">
       <img
@@ -9,13 +29,12 @@ const Inicio = () => {
         alt="fondo cafe"
       />
       <Container>
-        <h1 className="display-4">Nuestros Productos</h1>
+        <h1 className="display-4 py-3">Nuestros Productos</h1>
         <hr />
         <Row>
-            <CardProducto></CardProducto>
-            <CardProducto></CardProducto>
-            <CardProducto></CardProducto>
-            <CardProducto></CardProducto>
+          {listaProductos.map((producto) => (
+            <CardProducto key={producto._id} producto={producto}></CardProducto>
+          ))}
         </Row>
       </Container>
     </section>
